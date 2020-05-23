@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dp150"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardElevation="@dimen/dp5"
+    app:cardMaxElevation="@dimen/dp5"
+    android:layout_margin="5dp">
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:layout_centerVertical="true"
+        android:id="@+id/iv_hinh_mon_an"
+        android:layout_width="@dimen/dp150"
+        android:layout_height="@dimen/dp150"/>
+
+    <LinearLayout
+        android:gravity="center"
+        android:orientation="vertical"
+        android:weightSum="2"
+        android:layout_toRightOf="@id/iv_hinh_mon_an"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:gravity="center"
+            android:layout_weight="1"
+            android:textColor="@color/colorTenMonAn"
+            android:text="Ten mon an"
+            android:id="@+id/tv_ten_mon_an"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/sp20"/>
+        <LinearLayout
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+
+            <ImageView
+                android:layout_marginRight="@dimen/dp20"
+                android:id="@+id/iv_search"
+                android:layout_toLeftOf="@id/iv_map"
+                android:background="@drawable/ic_search"
+                android:layout_centerVertical="true"
+                android:layout_width="@dimen/dp25"
+                android:layout_height="@dimen/dp25"/>
+            <ImageView
+                android:layout_toLeftOf="@id/cb_choose"
+                android:layout_marginRight="@dimen/dp20"
+                android:id="@+id/iv_map"
+                android:background="@drawable/ic_google_maps"
+                android:layout_centerVertical="true"
+                android:layout_width="@dimen/dp25"
+                android:layout_height="@dimen/dp25"/>
+
+            <CheckBox
+                android:id="@+id/cb_choose"
+                android:layout_marginRight="@dimen/dp10"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_width="@dimen/dp25"
+                android:layout_height="@dimen/dp25"/>
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+</RelativeLayout>
+</androidx.cardview.widget.CardView>
