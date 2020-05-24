@@ -29,7 +29,7 @@ public class AskNumberphoneDialog {
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                if(TextUtils.isEmpty(input.getText().toString())){
+                if(input.length()<4){
                     Toast.makeText(context, "vui long nhap vao sdt chinh xac", Toast.LENGTH_SHORT).show();
                 }else {
                     askNumberphoneListener.onOkeClick(input.getText().toString());

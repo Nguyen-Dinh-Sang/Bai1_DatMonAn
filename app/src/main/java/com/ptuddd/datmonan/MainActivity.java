@@ -48,7 +48,19 @@ public class MainActivity extends AppCompatActivity implements AdapterMonAn.OnIt
         btn_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sendSMSMessage();
+                boolean hasOne=false;
+                for (MonAn m:listMonAn) {
+                    if(m.isChoose()){
+                       hasOne=true;
+                       break;
+                    }
+                }
+                if(hasOne) {
+
+                    sendSMSMessage();
+                }else {
+                    Toast.makeText(MainActivity.this, "Vui long chon it nhat 1 mon", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
@@ -57,11 +69,12 @@ public class MainActivity extends AppCompatActivity implements AdapterMonAn.OnIt
         recyclerView = findViewById(R.id.rv_main);
         btn_submit = findViewById(R.id.btn_submit);
         listMonAn = new ArrayList<>();
-        listMonAn.add(new MonAn("Com ga chien nuoc mam","geo:0,0?q=\""+10.7481871+","+106.6987255+"\"","http://tamkygroup.com/mon-bo/bo-luc-lac.html",R.drawable.com_ga_xoi_mo));
-        listMonAn.add(new MonAn("Com ga chien nuoc mam","geo:0,0?q=\""+10.7481871+","+106.6987255+"\"","http://tamkygroup.com/mon-bo/bo-luc-lac.html",R.drawable.com_ga_xoi_mo));
-        listMonAn.add(new MonAn("Com ga chien nuoc mam","geo:0,0?q=\""+10.7481871+","+106.6987255+"\"","http://tamkygroup.com/mon-bo/bo-luc-lac.html",R.drawable.com_ga_xoi_mo));
-        listMonAn.add(new MonAn("Com ga chien nuoc mam","geo:0,0?q=\""+10.7481871+","+106.6987255+"\"","http://tamkygroup.com/mon-bo/bo-luc-lac.html",R.drawable.com_ga_xoi_mo));
-        listMonAn.add(new MonAn("Com ga chien nuoc mam","geo:0,0?q=\""+10.7481871+","+106.6987255+"\"","http://tamkygroup.com/mon-bo/bo-luc-lac.html",R.drawable.com_ga_xoi_mo));
+        listMonAn.add(new MonAn("Com ga xoai mo","geo:0,0?q=\""+10.7481871+","+106.6987255+"\"","http://tamkygroup.com/mon-bo/bo-luc-lac.html",R.drawable.com_ga_xoi_mo));
+        listMonAn.add(new MonAn("Mi goi xao bo","geo:0,0?q=\""+10.7481871+","+106.6987255+"\"","http://tamkygroup.com/mi-goi/mi-goi-xao-bo.html",R.drawable.migoixaobo));
+        listMonAn.add(new MonAn("Mi goi xao hai san","geo:0,0?q=\""+10.7481871+","+106.6987255+"\"","http://tamkygroup.com/mi-goi/mi-goi-xao-hai-san.html",R.drawable.migoixaohaisan));
+        listMonAn.add(new MonAn("Com bo bit tet","geo:0,0?q=\""+10.7481871+","+106.6987255+"\"","http://tamkygroup.com/com-mon-bo/com-bo-bit-tet.html",R.drawable.combobittet));
+        listMonAn.add(new MonAn("Com bo xao thap cam","geo:0,0?q=\""+10.7481871+","+106.6987255+"\"","http://tamkygroup.com/com-mon-bo/com-bo-xao-thap-cam.html",R.drawable.comboxaothapcam));
+        listMonAn.add(new MonAn("Pho ga","geo:0,0?q=\""+10.7648944+","+106.6855169+"\"","http://phohung.com.vn/pho-hung/pho-ga/",R.drawable.pho_ga));
 
         RecyclerView recyclerView = findViewById(R.id.rv_main);
 //        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
@@ -128,6 +141,7 @@ public class MainActivity extends AppCompatActivity implements AdapterMonAn.OnIt
                         sms+=m.getTenMonAn()+"\n";
                     }
                 }
+
                 SmsManager
                         .getDefault()
                         .sendTextMessage(numberphone, null,
