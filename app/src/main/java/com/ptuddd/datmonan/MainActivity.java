@@ -63,12 +63,12 @@ public class MainActivity extends AppCompatActivity implements AdapterMonAn.OnIt
         recyclerView = findViewById(R.id.rv_main);
         btn_submit = findViewById(R.id.btn_submit);
         listMonAn = new ArrayList<>();
-        listMonAn.add(new MonAn("Com ga xoai mo","geo:0,0?q=\""+10.7481871+","+106.6987255+"\"","http://tamkygroup.com/mon-bo/bo-luc-lac.html",R.drawable.com_ga_xoi_mo));
-        listMonAn.add(new MonAn("Mi goi xao bo","geo:0,0?q=\""+10.7481871+","+106.6987255+"\"","http://tamkygroup.com/mi-goi/mi-goi-xao-bo.html",R.drawable.migoixaobo));
-        listMonAn.add(new MonAn("Mi goi xao hai san","geo:0,0?q=\""+10.7481871+","+106.6987255+"\"","http://tamkygroup.com/mi-goi/mi-goi-xao-hai-san.html",R.drawable.migoixaohaisan));
-        listMonAn.add(new MonAn("Com bo bit tet","geo:0,0?q=\""+10.7481871+","+106.6987255+"\"","http://tamkygroup.com/com-mon-bo/com-bo-bit-tet.html",R.drawable.combobittet));
-        listMonAn.add(new MonAn("Com bo xao thap cam","geo:0,0?q=\""+10.7481871+","+106.6987255+"\"","http://tamkygroup.com/com-mon-bo/com-bo-xao-thap-cam.html",R.drawable.comboxaothapcam));
-        listMonAn.add(new MonAn("Pho ga","geo:0,0?q=\""+10.7648944+","+106.6855169+"\"","http://phohung.com.vn/pho-hung/pho-ga/",R.drawable.pho_ga));
+        listMonAn.add(new MonAn("Cơm gà xối mỡ","10.7481871,106.6987255","http://tamkygroup.com/mon-bo/bo-luc-lac.html",R.drawable.com_ga_xoi_mo));
+        listMonAn.add(new MonAn("Mì gói xào bò","10.7481871,106.6987255","http://tamkygroup.com/mi-goi/mi-goi-xao-bo.html",R.drawable.migoixaobo));
+        listMonAn.add(new MonAn("Mì gói xào hải sản","10.7481871,106.6987255","http://tamkygroup.com/mi-goi/mi-goi-xao-hai-san.html",R.drawable.migoixaohaisan));
+        listMonAn.add(new MonAn("Cơm bò bít tết","10.7481871,106.6987255","http://tamkygroup.com/com-mon-bo/com-bo-bit-tet.html",R.drawable.combobittet));
+        listMonAn.add(new MonAn("Cơm bò xào thập cẩm","10.7481871,106.6987255","http://tamkygroup.com/com-mon-bo/com-bo-xao-thap-cam.html",R.drawable.comboxaothapcam));
+        listMonAn.add(new MonAn("Phở gà","10.7648944,106.6855169","http://phohung.com.vn/pho-hung/pho-ga/",R.drawable.pho_ga));
 
         RecyclerView recyclerView = findViewById(R.id.rv_main);
 //        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
@@ -79,10 +79,12 @@ public class MainActivity extends AppCompatActivity implements AdapterMonAn.OnIt
 
     @Override
     public void onLocationClick(String location) {
-        Uri uri = Uri.parse(location);
-        Intent intent = new Intent(android.content.Intent.ACTION_VIEW, uri);
-        intent.setPackage("com.google.android.apps.maps");
-        startActivity(intent);
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com/maps/search/?api=1&query="+location));
+        startActivity(browserIntent);
+//        Uri uri = Uri.parse(location);
+//        Intent intent = new Intent(android.content.Intent.ACTION_VIEW, uri);
+//        intent.setPackage("com.google.android.apps.maps");
+//        startActivity(intent);
     }
 
     @Override
@@ -132,18 +134,19 @@ public class MainActivity extends AppCompatActivity implements AdapterMonAn.OnIt
         AskNumberphoneDialog.getInstance().showDialog(new AskNumberphoneDialog.AskNumberphoneListener() {
             @Override
             public void onOkeClick(String numberphone) {
-                String sms = "";
-                for (MonAn m:listMonAn) {
-                    if(m.isChoose()){
-                        sms+=m.getTenMonAn()+"\n";
+                    String sms = "";
+                    for (MonAn m : listMonAn) {
+                        if (m.isChoose()) {
+                            sms += m.getTenMonAn() + "\n";
+                        }
                     }
-                }
 
-                SmsManager
-                        .getDefault()
-                        .sendTextMessage(numberphone, null,
-                                sms,
-                                null, null);
+                    SmsManager
+                            .getDefault()
+                            .sendTextMessage(numberphone, null,
+                                    sms,
+                                    null, null);
+
             }
         },this);
 

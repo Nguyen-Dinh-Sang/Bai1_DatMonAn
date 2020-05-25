@@ -10,6 +10,8 @@ import android.widget.Toast;
 
 public class AskNumberphoneDialog {
     public static AskNumberphoneDialog instance;
+    private String numberphoneRegex = "^(?:(?:\\+?1\\s*(?:[.-]\\s*)?)?(?:\\(\\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\\s*\\)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\\s*(?:[.-]\\s*)?)?([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\\s*(?:[.-]\\s*)?([0-9]{4})(?:\\s*(?:#|x\\.?|ext\\.?|extension)\\s*(\\d+))?$";
+
 
     public static AskNumberphoneDialog getInstance() {
         if(instance==null)
@@ -24,16 +26,16 @@ public class AskNumberphoneDialog {
         builder.setTitle("Nhap vao so dien thoai");
 
         final EditText input = new EditText(context);
-        input.setInputType(InputType.TYPE_CLASS_TEXT);
+        input.setInputType(InputType.TYPE_CLASS_PHONE);
         builder.setView(input);
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                if(input.length()<4){
-                    Toast.makeText(context, "vui long nhap vao sdt chinh xac", Toast.LENGTH_SHORT).show();
+                if(input.getText().toString().length()>3) {
+                        askNumberphoneListener.onOkeClick(input.getText().toString());
+                        dialog.cancel();
                 }else {
-                    askNumberphoneListener.onOkeClick(input.getText().toString());
-                    dialog.cancel();
+                        Toast.makeText(context, "vui long nhap vao sdt chinh xac", Toast.LENGTH_SHORT).show();
                 }
             }
         });

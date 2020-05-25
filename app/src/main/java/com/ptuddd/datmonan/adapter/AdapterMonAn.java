@@ -36,7 +36,7 @@ public class AdapterMonAn extends RecyclerView.Adapter<AdapterMonAn.ViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, final int position) {
         String tenMonAn = monAnList.get(position).getTenMonAn();
         String diaChi = monAnList.get(position).getDiaChi();
         String linkWeb = monAnList.get(position).getLinkWeb();
@@ -44,6 +44,18 @@ public class AdapterMonAn extends RecyclerView.Adapter<AdapterMonAn.ViewHolder> 
         holder.hinhAnhMonAn.setImageResource(hinhAnh);
 
         holder.tenMonAn.setText(tenMonAn);
+        holder.diaChi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onItemClickListener.onLocationClick(monAnList.get(position).getDiaChi());
+            }
+        });
+        holder.website.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onItemClickListener.onWebsiteClick(monAnList.get(position).getLinkWeb());
+            }
+        });
 //        holder.diaChi.setT
     }
 
@@ -53,7 +65,7 @@ public class AdapterMonAn extends RecyclerView.Adapter<AdapterMonAn.ViewHolder> 
     }
 
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class ViewHolder extends RecyclerView.ViewHolder  {
         TextView tenMonAn;
         ImageView diaChi,website,hinhAnhMonAn;
         CheckBox checkBox;
@@ -71,25 +83,15 @@ public class AdapterMonAn extends RecyclerView.Adapter<AdapterMonAn.ViewHolder> 
                     monAnList.get(getAdapterPosition()).setChoose(isChecked);
                 }
             });
-            itemView.setOnClickListener(this);
+
+//            itemView.setOnClickListener(this);
         }
 
-        @Override
-        public void onClick(View view) {
-            diaChi.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    onItemClickListener.onLocationClick(monAnList.get(getAdapterPosition()).getDiaChi());
-                }
-            });
-            website.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    onItemClickListener.onWebsiteClick(monAnList.get(getAdapterPosition()).getLinkWeb());
-                }
-            });
-//            if (mClickListener != null) mClickListener.onItemClick(view, getAdapterPosition());
-        }
+//        @Override
+//        public void onClick(View view) {
+//
+////            if (mClickListener != null) mClickListener.onItemClick(view, getAdapterPosition());
+//        }
     }
 
     public interface OnItemClickListener{
