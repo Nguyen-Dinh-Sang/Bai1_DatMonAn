@@ -1,5 +1,5 @@
 package com.ptuddd.datmonan;
 
-class Cons {
+public class Cons {
     public static String url;
 }

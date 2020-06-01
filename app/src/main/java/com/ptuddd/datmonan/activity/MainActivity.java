@@ -1,4 +1,4 @@
-package com.ptuddd.datmonan;
+package com.ptuddd.datmonan.activity;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
@@ -24,6 +24,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.ptuddd.datmonan.Cons;
+import com.ptuddd.datmonan.R;
 import com.ptuddd.datmonan.adapter.AdapterMonAn;
 import com.ptuddd.datmonan.data.MonAn;
 import com.ptuddd.datmonan.dialog.AskNumberphoneDialog;

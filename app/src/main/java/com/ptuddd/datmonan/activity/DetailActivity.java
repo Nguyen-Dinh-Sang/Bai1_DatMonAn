@@ -1,4 +1,4 @@
-package com.ptuddd.datmonan;
+package com.ptuddd.datmonan.activity;
 
 import android.os.Bundle;
 import android.os.PersistableBundle;
@@ -12,6 +12,9 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.ptuddd.datmonan.Cons;
+import com.ptuddd.datmonan.R;
 
 import java.util.Objects;
 
