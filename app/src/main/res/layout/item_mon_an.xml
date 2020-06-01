@@ -7,7 +7,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardElevation="@dimen/dp5"
     app:cardMaxElevation="@dimen/dp5"
-    android:layout_margin="5dp">
+    android:layout_margin="@dimen/dp5">
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -48,7 +48,7 @@
                 android:layout_marginRight="@dimen/dp20"
                 android:id="@+id/iv_search"
                 android:layout_toLeftOf="@id/iv_map"
-                android:background="@drawable/ic_search"
+                android:background="@drawable/ic_details"
                 android:layout_centerVertical="true"
                 android:layout_width="@dimen/dp25"
                 android:layout_height="@dimen/dp25"/>
@@ -62,12 +62,12 @@
                 android:layout_height="@dimen/dp25"/>
 
             <CheckBox
+                android:gravity="center"
                 android:id="@+id/cb_choose"
-                android:layout_marginRight="@dimen/dp10"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:layout_width="@dimen/dp25"
-                android:layout_height="@dimen/dp25"/>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
         </LinearLayout>
     </LinearLayout>
 

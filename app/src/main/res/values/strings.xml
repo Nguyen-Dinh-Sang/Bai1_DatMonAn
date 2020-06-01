@@ -1,4 +1,5 @@
 <resources>
-    <string name="app_name">DatMonAn</string>
-    <string name="btn_submit">Order</string>
+    <string name="app_name">Đặt Món Ăn</string>
+    <string name="btn_submit">Đặt Món</string>
+    <string name="permission_denied_sms">Quyền này là cần thiết để gửi sms , vui lòng bật quyền này để tiếp tục sử dụng</string>
 </resources>

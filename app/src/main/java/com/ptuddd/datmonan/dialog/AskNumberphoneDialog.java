@@ -26,9 +26,9 @@ public class AskNumberphoneDialog {
         builder.setTitle("Nhap vao so dien thoai");
 
         final EditText input = new EditText(context);
-        input.setInputType(InputType.TYPE_CLASS_PHONE);
+        input.setInputType(InputType.TYPE_CLASS_NUMBER);
         builder.setView(input);
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton("Đồng Ý", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 if(input.getText().toString().length()>3) {
@@ -39,7 +39,7 @@ public class AskNumberphoneDialog {
                 }
             }
         });
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();
