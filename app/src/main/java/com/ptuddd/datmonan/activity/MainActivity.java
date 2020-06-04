@@ -131,13 +131,9 @@ public class MainActivity extends AppCompatActivity implements AdapterMonAn.OnIt
 //            }
 //        }
         if (requestCode == MY_PERMISSIONS_REQUEST_SEND_SMS) {
-            // for each permission check if the user granted/denied them
-            // you may want to group the rationale in a single dialog,
-            // this is just an example
             for (int i = 0, len = permissions.length; i < len; i++) {
                 String permission = permissions[i];
                 if (grantResults[i] == PackageManager.PERMISSION_DENIED) {
-                    // user rejected the permission
                     boolean showRationale = shouldShowRequestPermissionRationale( permission );
                     if (! showRationale) {
                         final android.app.AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -175,6 +171,8 @@ public class MainActivity extends AppCompatActivity implements AdapterMonAn.OnIt
                             }
                         });
                     }
+                }else {
+                    sendSMS();
                 }
             }
         }else {
@@ -199,7 +197,7 @@ public class MainActivity extends AppCompatActivity implements AdapterMonAn.OnIt
                             .sendTextMessage(numberphone, null,
                                     sms,
                                     null, null);
-
+                Toast.makeText(MainActivity.this, "Đã gửi sms đến sdt :"+numberphone, Toast.LENGTH_SHORT).show();
             }
         },this);
 

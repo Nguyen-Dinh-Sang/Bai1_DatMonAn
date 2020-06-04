@@ -30,6 +30,7 @@ public class BaseActivity extends AppCompatActivity {
     public void showDialogLoading(String loadingmessage){
         dialog = ProgressDialog.show(this, "",
                 loadingmessage, true);
+        dialog.setCancelable(true);
     }
     public void cancleDialogLoading(){
         if(dialog.isShowing())
